@@ -11,23 +11,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btn_make_calc.setOnClickListener {
-            val pesoTxt = edt_peso.text.toString()
-            val alturaTxt = edt_altura.text.toString()
-            val peso = pesoTxt.toFloat()
-            val altura = alturaTxt.toFloat()
-            val imc = peso / (altura * altura)
-            when {
-                imc < 16 -> txt_result_imc.text = "Magreza grave"
-                imc < 17 -> txt_result_imc.text = "Magreza moderada"
-                imc < 18.5 -> txt_result_imc.text = "Magreza leve"
-                imc < 25 -> txt_result_imc.text = "Saudável"
-                imc < 30 -> txt_result_imc.text = "Sobrepeso"
-                imc < 35 -> txt_result_imc.text = "Obesidade Grau I"
-                imc < 40 -> txt_result_imc.text = "Obesidade Grau II (severa)"
-                else -> {
-                    txt_result_imc.text = "Obesidade Grau III (mórbida)"
-                }
-            }
+            val peso = edt_peso.text.toString()
+            val altura = edt_altura.text.toString()
+
+            val imc = getImcResult(peso, altura)
+            txt_result_imc.text = imc.result.label
         }
     }
 }
