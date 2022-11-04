@@ -2,6 +2,8 @@ package com.fiap.aula8
 
 internal fun getImcResult(pesoTxt: String, alturaTxt: String): IMCResult {
 
+    // VALIDA SE A ALTURA E PESO ESTAO PREENCHIDOS
+    
     if (alturaTxt.isBlank() || pesoTxt.isBlank()) {
         return IMCResult(Result.BLANK)
     }
